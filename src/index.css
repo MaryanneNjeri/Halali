@@ -2,16 +2,45 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    opacity: 0.7;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
     height: 100vh;
     position: relative;
-    background-size: cover;
+    background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("./assets/images/welcomeh.jpg");
+    background-image: url("./assets/images/register.png");
 }
-.landing-text{
-    color:#fff ;
-    text-align: center;
-    font-family: 'Dosis', sans-serif;
+
+.center {
+    padding:20px;
 }
+/* Registration form */
+.h3-responsive{
+    font-weight: bolder;
+    color:#ff9147;
+    font-family: 'Open Sans', sans-serif;
+}
+.registration-icon{
+    font-size: 1px;
+    color:gray;
+
+}
+.register-button-div{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.register-button{
+    width: 80%;
+    border-radius: 30px;
+}
+.registration-form-row {
+    /*margin-top: 2.5rem;*/
+    margin-right: 5rem;
+}
+.form-column{
+    margin-top: 8.5rem;
+}
+
+/*******************/
