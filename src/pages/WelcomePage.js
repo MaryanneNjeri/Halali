@@ -1,7 +1,25 @@
 import React from 'react';
 import { MDBContainer,MDBBtn } from "mdbreact";
-import welcome from '../assets/images/celebration.svg'
+import welcome from '../assets/images/celebration.svg';
+
+
 export default class WelcomePage extends  React.Component{
+    goToPartner=()=>{
+        this.props.history.push('/partner')
+
+    };
+    goToIntern=()=>{
+        this.props.history.push('/intern')
+
+    };
+    goToAdvocate=()=>{
+        this.props.history.push('/advocate')
+
+    };
+    goToSecretary=()=>{
+        this.props.history.push('/secretary')
+
+    };
     render() {
         return(
             <MDBContainer>
@@ -15,12 +33,12 @@ export default class WelcomePage extends  React.Component{
                   <br/>
                   <br/>
                   <br/>
-                    <p className="text-center"><i>Welcome select your role to continue ....</i></p>
+                    <p className="text-center"><i>Select your role to continue ....</i></p>
                   <div className="role-buttons">
-                      <MDBBtn  gradient="peach" className="welcome-buttons">Partner</MDBBtn>
-                      <MDBBtn gradient="sunny-morning" className="welcome-buttons">Secretary</MDBBtn>
-                      <MDBBtn gradient="peach" className="welcome-buttons">Advocate</MDBBtn>
-                      <MDBBtn gradient="aqua" className="welcome-buttons">Intern</MDBBtn>
+                      <MDBBtn  gradient="peach" onClick={this.goToPartner} className="welcome-buttons">Partner</MDBBtn>
+                      <MDBBtn gradient="sunny-morning" onClick={this.goToSecretary} className="welcome-buttons">Secretary</MDBBtn>
+                      <MDBBtn gradient="peach" onClick={this.goToAdvocate} className="welcome-buttons">Advocate</MDBBtn>
+                      <MDBBtn gradient="aqua" onClick={this.goToIntern} className="welcome-buttons">Intern</MDBBtn>
                   </div>
                 </div>
             </MDBContainer>
