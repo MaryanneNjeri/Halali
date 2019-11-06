@@ -30,6 +30,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: column;
 }
 .register-button{
     width: 80%;
@@ -42,5 +43,47 @@
 .form-column{
     margin-top: 8.5rem;
 }
+.decoratedLine {
+    overflow: hidden;
+    padding-left: 40px;
+    padding-right: 40px;
+}
 
+.decoratedLine>span {
+    position: relative;
+    display: inline-block;
+}
+
+.decoratedLine>span:before,
+.decoratedLine>span:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-bottom: 1px solid;
+    width: 591px;
+    /* half of limiter*/
+    margin: 0 20px;
+}
+
+.decoratedLine>span:before {
+    right: 100%;
+}
+
+.decoratedLine>span:after {
+    left: 100%;
+}
 /*******************/
+.login-column {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    height: 100vh;
+    position: relative;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("./assets/images/login1.png");
+}
