@@ -36,7 +36,10 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    margin-top: 250px;
+
 }
+
 .register-button{
     width: 80%;
     border-radius: 30px;
@@ -102,7 +105,12 @@
     width:30%;
     border-radius: 30px;
     color: white;
+}
 
+.maps-card {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 576px) {
