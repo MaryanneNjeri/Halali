@@ -3,7 +3,7 @@ import { MDBRow, MDBCol,MDBInput,MDBBtn } from 'mdbreact';
 
 export default class LoginPage extends React.Component {
     login=()=>{
-        this.props.history.push('/welcome')
+        this.props.history.push('/company_registration')
     };
     render() {
         return (
@@ -20,7 +20,7 @@ export default class LoginPage extends React.Component {
 
                         <MDBInput label="Password" type="password"  icon="unlock" iconClass="registration-icon" name="password" required />
 
-                        <div className="register-button-div">
+                        <div className="register-button-login">
                             <MDBBtn gradient="peach" onClick={this.login} className="register-button" >Login</MDBBtn>
                         </div>
                     </div>

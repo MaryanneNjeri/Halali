@@ -7,7 +7,7 @@
     height: 100vh;
     position: relative;
     background-size: 100% auto;
-    background-position: center;
+    /*background-position: center;*/
     background-repeat: no-repeat;
     background-image: url("./assets/images/register.png");
 }
@@ -39,7 +39,12 @@
     margin-top: 250px;
 
 }
-
+.register-button-login{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 .register-button{
     width: 80%;
     border-radius: 30px;
@@ -98,7 +103,7 @@
 .role-buttons{
     justify-content: center;
     align-items: center;
-    display: flex;
+    /*display: flex;*/
     /*flex-direction: column;*/
 }
 .welcome-buttons{
@@ -116,5 +121,6 @@
 @media (max-width: 576px) {
     .role-buttons{
         flex-direction: column;
-    }
+        /*display: flex;*/
+}
 }
