@@ -64,5 +64,5 @@ class RegistrationPage extends React.Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyABtuT2U1dZwjxA2IvWInVUcs-5AnJawAs',
+    apiKey: 'nnnnnn',
 })(RegistrationPage);

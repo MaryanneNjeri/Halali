@@ -20,6 +20,7 @@
     color:gray;
     font-family: 'Open Sans', sans-serif;
 }
+
 /* Registration form */
 .h3-responsive{
     font-weight: bolder;
@@ -43,8 +44,12 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
 }
+.register-buttons{
+    border-radius: 30px;
+}
+
 .register-button{
     width: 80%;
     border-radius: 30px;
@@ -55,6 +60,7 @@
 }
 .form-column{
     margin-top: 8.5rem;
+
 }
 .decoratedLine {
     overflow: hidden;
@@ -103,11 +109,17 @@
 .role-buttons{
     justify-content: center;
     align-items: center;
-    /*display: flex;*/
-    /*flex-direction: column;*/
+    display: flex;
+    flex-direction: column;
+}
+.role-buttons-reg{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 .welcome-buttons{
-    width:30%;
+    width:200px;
     border-radius: 30px;
     color: white;
 }
@@ -117,10 +129,20 @@
     height: auto;
     margin-bottom: 20px;
 }
-
+@media (max-width: 1199.98px) {
+    .form-column{
+        margin-top: 17rem;
+    }
+}
 @media (max-width: 576px) {
     .role-buttons{
         flex-direction: column;
         /*display: flex;*/
-}
+    }
+    .welcome-buttons{
+        width: 100px;
+    }
+    .form-column{
+        margin-top: 12rem;
+    }
 }
