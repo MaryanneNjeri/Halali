@@ -28,7 +28,6 @@ export default class CompanyRegistration extends React.Component{
         this.setState({
             role:'advocate',
             headerText: 'Advocate Details',
-
             form:true,
         })
     };
@@ -39,6 +38,11 @@ export default class CompanyRegistration extends React.Component{
            form:true
        })
     };
+    close=()=>{
+        this.setState({
+            form:false
+        })
+    }
     render() {
         const { form,role,headerText } = this.state;
         return(
@@ -46,10 +50,13 @@ export default class CompanyRegistration extends React.Component{
                 <MDBCol lg="7" md="7" sm="7" className="login-column"/>
                 <MDBCol lg="5" md="5"  sm="5" className="form-column">
 
-                    <h3 className="h3-responsive text-center"><b>Who would you like to register</b></h3>
-
+                    <h4 className="h3-responsive text-center"><b>Who would you like to register</b></h4>
+                     <br/>
                     { form ===  true ?
                         <div className="form">
+
+                                <MDBIcon icon="times" className="float-right" onClick={this.close} />
+
                             <p className="welcome-text">{headerText}</p>
                             <MDBInput label="First Name" type="text" name="first_name" required />
                             <MDBInput label="Last Name" type="text"  name="last_name" required />
@@ -59,7 +66,7 @@ export default class CompanyRegistration extends React.Component{
 
                             <br/>
                             <div className="register-button-login">
-                                <MDBBtn gradient="aqua"  onClick={this.add}  icon="magic" className="register-buttons"><MDBIcon icon="plus" className="mr-1" /> Add</MDBBtn>
+                                <MDBBtn gradient="aqua"  onClick={this.add}  icon="magic" className="register-buttons" ><MDBIcon icon="plus" className="mr-1" /> Add</MDBBtn>
                                 <br/>
                                 <br/>
                                 <MDBBtn gradient="peach" onClick={this.save} className="register-buttons" >Save</MDBBtn>

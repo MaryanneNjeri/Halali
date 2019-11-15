@@ -23,9 +23,12 @@
 
 /* Registration form */
 .h3-responsive{
-    font-weight: bolder;
-    color:#ff9147;
+    font-weight: lighter;
+    color:gray;
     font-family: 'Open Sans', sans-serif;
+}
+.floating-close{
+    border-radius: 60px;
 }
 .registration-icon{
     font-size: 1px;
