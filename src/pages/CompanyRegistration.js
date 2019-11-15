@@ -1,11 +1,24 @@
 import React from 'react';
 import {MDBBtn, MDBCol, MDBInput, MDBRow,MDBIcon} from "mdbreact";
 
+let partner =[];
+let advocate = [];
+let intern = [];
+let secretary = [];
+
 export default class CompanyRegistration extends React.Component{
     constructor(props) {
         super(props);
         this.state={
             role:'',
+            partner:[],
+            advocate:[],
+            intern:[],
+            secretary:[],
+            first_name:'',
+            last_name:'',
+            email:'',
+            address:'',
             form:false,
             headerText:''
         }
@@ -38,13 +51,89 @@ export default class CompanyRegistration extends React.Component{
            form:true
        })
     };
+    handleChange=({target})=>{
+        this.setState({[target.name]:target.value})
+
+    };
+    save=()=>{
+        const { first_name,last_name,email,address,role } = this.state;
+        if ( role === 'partner'){
+            partner.push({ first_name,last_name,email,address,role});
+            this.setState({
+                partner
+            });
+            console.log(partner)
+
+        }
+        else  if (role === 'advocate'){
+            advocate.push('advocate',{first_name,last_name,email,address,role});
+            this.setState({
+                advocate:advocate
+            })
+
+        }
+        else if (role === 'intern'){
+            intern.push('intern',{first_name,last_name,email,address,role});
+            this.setState({
+                intern
+            })
+
+        }
+        else{
+            secretary.push('secretary',{first_name,last_name,email,address,role});
+            this.setState({
+                secretary
+            })
+
+        }
+
+    };
     close=()=>{
         this.setState({
             form:false
         })
-    }
+    };
+    add=()=>{
+        const { first_name,last_name,email,address,role } = this.state;
+        if ( role === 'partner'){
+            partner.push({ first_name,last_name,email,address,role});
+            this.setState({
+                partner
+            });
+            console.log(partner)
+
+        }
+        else  if (role === 'advocate'){
+            advocate.push('advocate',{first_name,last_name,email,address,role});
+            this.setState({
+                advocate:advocate
+            })
+
+        }
+        else if (role === 'intern'){
+            intern.push('intern',{first_name,last_name,email,address,role});
+            this.setState({
+                intern
+            })
+
+        }
+        else{
+            secretary.push('secretary',{first_name,last_name,email,address,role});
+            this.setState({
+                secretary
+            })
+
+        }
+        this.setState({
+            form:true,
+            first_name:'',
+            last_name:'',
+            address:'',
+            email:''
+        })
+    };
     render() {
-        const { form,role,headerText } = this.state;
+        const { form,role,headerText,first_name,last_name,email,address } = this.state;
         return(
             <MDBRow className="registration-form-row">
                 <MDBCol lg="7" md="7" sm="7" className="login-column"/>
@@ -58,15 +147,40 @@ export default class CompanyRegistration extends React.Component{
                                 <MDBIcon icon="times" className="float-right" onClick={this.close} />
 
                             <p className="welcome-text">{headerText}</p>
-                            <MDBInput label="First Name" type="text" name="first_name" required />
-                            <MDBInput label="Last Name" type="text"  name="last_name" required />
-                            <MDBInput label="Email" type="email"     name="email" required />
-                            <MDBInput label="Address" type="text"  name="address" required />
-                            <MDBInput label="Role"  value={role} type="text"  name="role" required />
+                            <MDBInput
+                                label="First Name"
+                                type="text"
+                                value={first_name}
+                                name="first_name"
+                                onChange={this.handleChange} required
+                            />
+                            <MDBInput
+                                label="Last Name"
+                                type="text"
+                                value={last_name}
+                                name="last_name"
+                                onChange={this.handleChange} required />
+                            <MDBInput
+                                label="Email"
+                                type="email"
+                                value={email}
+                                name="email"
+                                onChange={this.handleChange} required />
+                            <MDBInput
+                                label="Address"
+                                type="text" value={address}
+                                name="address"
+                                onChange={this.handleChange} required />
+                            <MDBInput
+                                label="Role"
+                                value={role}
+                                type="text"
+                                name="role" required />
 
                             <br/>
                             <div className="register-button-login">
-                                <MDBBtn gradient="aqua"  onClick={this.add}  icon="magic" className="register-buttons" ><MDBIcon icon="plus" className="mr-1" /> Add</MDBBtn>
+                                <MDBBtn gradient="aqua"  onClick={this.add}  icon="magic" className="register-buttons" >
+                                    <MDBIcon icon="plus" className="mr-1" /> Save & Add</MDBBtn>
                                 <br/>
                                 <br/>
                                 <MDBBtn gradient="peach" onClick={this.save} className="register-buttons" >Save</MDBBtn>
