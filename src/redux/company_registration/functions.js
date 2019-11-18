@@ -1,4 +1,4 @@
-import { postSuccess,fetchRegistrationBegin,errorHandling } from "./action";
+import { postCompanyDetails,fetchCompanyBegin,errorHandling } from "./action";
 
 function handleErrors(response) {
     if (!response.ok) {
@@ -8,21 +8,22 @@ function handleErrors(response) {
 }
 
 // function to accepts company details as a param.
-export function registerCompany(company){
+export function registerPartner(partner){
+    console.log(partner);
     return (dispatch) => {
-        dispatch(fetchRegistrationBegin());
-        return fetch('http://localhost:3001/CompanyRegistration', {
+        dispatch(fetchCompanyBegin());
+        return fetch('http://localhost:3001/Partner', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(company)
+            body: JSON.stringify(partner)
         })
             .then(handleErrors)
             .then(response => response.json())
             .then((body) => {
-                dispatch(postSuccess(body));
+                dispatch(postCompanyDetails(body));
                 return body;
             })
             .catch(error => dispatch(errorHandling(error)));

@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { registerPartner } from "../redux/company_registration/functions";
 import {MDBBtn, MDBCol, MDBInput, MDBRow,MDBIcon} from "mdbreact";
+import LoadingComponent from './sections/LoadingComponent';
+import ErrorComponent from './sections/ErrorComponent';
 
 let partner =[];
 let advocate = [];
 let intern = [];
 let secretary = [];
 
-export default class CompanyRegistration extends React.Component{
+class CompanyRegistration extends React.Component{
     constructor(props) {
         super(props);
         this.state={
@@ -57,35 +61,45 @@ export default class CompanyRegistration extends React.Component{
     };
     save=()=>{
         const { first_name,last_name,email,address,role } = this.state;
+        const { dispatch } = this.props;
         if ( role === 'partner'){
             partner.push({ first_name,last_name,email,address,role});
             this.setState({
-                partner
+                partner,
+                form:false
             });
-            console.log(partner)
+            dispatch(registerPartner(partner))
+            // console.log(partner)
 
         }
         else  if (role === 'advocate'){
             advocate.push({first_name,last_name,email,address,role});
             this.setState({
-                advocate:advocate
+                advocate:advocate,
+                form:false
+
             })
 
         }
         else if (role === 'intern'){
             intern.push({first_name,last_name,email,address,role});
             this.setState({
-                intern
+                intern,
+                form:false
+
             })
 
         }
         else{
             secretary.push({first_name,last_name,email,address,role});
             this.setState({
-                secretary
+                secretary,
+                form:false
+
             })
 
         }
+
 
     };
     close=()=>{
@@ -95,12 +109,15 @@ export default class CompanyRegistration extends React.Component{
     };
     add=()=>{
         const { first_name,last_name,email,address,role } = this.state;
+        const { dispatch } = this.props;
+
         if ( role === 'partner'){
             partner.push({ first_name,last_name,email,address,role});
             this.setState({
                 partner
             });
-            console.log(partner)
+            dispatch(registerPartner(partner))
+            // console.log(partner)
 
         }
         else  if (role === 'advocate'){
@@ -134,6 +151,17 @@ export default class CompanyRegistration extends React.Component{
     };
     render() {
         const { form,role,headerText,first_name,last_name,email,address } = this.state;
+        const { loading,error } = this.props;
+        if(loading){
+            return (
+                <LoadingComponent/>
+            )
+        }
+        if (error){
+            return (
+                <ErrorComponent/>
+            )
+        }
         return(
             <MDBRow className="registration-form-row">
                 <MDBCol lg="7" md="7" sm="7" className="company-reg-column"/>
@@ -205,3 +233,10 @@ export default class CompanyRegistration extends React.Component{
         )
     }
 }
+const mapStateToProps = state =>({
+    loading: state.company.loading,
+    error: state.company.error,
+    company:state.company.response
+});
+
+export default connect(mapStateToProps)(CompanyRegistration)
