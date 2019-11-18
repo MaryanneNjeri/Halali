@@ -8,6 +8,7 @@ import AdvocatePage from './pages/Dashboard/AdvocatePage';
 import InternPage from './pages/Dashboard/InternPage';
 import PartnerPage from './pages/Dashboard/PartnerPage';
 import CompanyRegistration from  './pages/CompanyRegistration';
+import ConfirmRegistration from './pages/ConfirmRegistration';
 
 export default class Routes extends React.Component {
   render() {
@@ -21,6 +22,7 @@ export default class Routes extends React.Component {
         <Route  exact path="/advocate" component={AdvocatePage}/>
         <Route  exact path="/intern" component={InternPage}/>
         <Route  exact path="/partner" component={PartnerPage}/>
+        <Route exact path="/confirm_registration" component={ConfirmRegistration}/>
       </Switch>
     );
   }
