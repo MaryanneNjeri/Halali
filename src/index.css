@@ -170,7 +170,10 @@
     font-weight: bolder;
 
 }
-
+.next{
+    align-items: flex-end;
+    flex-direction: row;
+}
 .maps-card {
     width: 100%;
     height: auto;

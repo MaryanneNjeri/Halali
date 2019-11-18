@@ -20,7 +20,7 @@ export default function  companyReducer(state = initialState,action) {
             return {
                 ...state,
                 loading:false,
-                response: action.payload.registrationData
+                response: action.payload.company
             };
         case ERROR_HANDLING:
             return {

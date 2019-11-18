@@ -7,9 +7,9 @@ export const fetchRegistrationBegin = () => ({
     type: FETCH_REGISTRATION_BEGIN,
 });
 
-export const fetchRegistrationSuccess = registrationData => ({
+export const fetchRegistrationSuccess = body => ({
     type: FETCH_REGISTRATION_SUCCESS,
-    payload: { registrationData },
+    payload: { body },
 
 });
 export const postSuccess = response => ({

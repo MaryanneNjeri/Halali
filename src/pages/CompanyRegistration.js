@@ -148,6 +148,9 @@ class CompanyRegistration extends React.Component{
             email:''
         })
     };
+    next=()=>{
+        this.props.history.push('/view_details')
+    };
     render() {
         const { form,role,headerText,first_name,last_name,email,address } = this.state;
         const { loading,error } = this.props;
@@ -221,6 +224,9 @@ class CompanyRegistration extends React.Component{
                             <MDBBtn gradient="peach" onClick={this.goToAdvocate} className="welcome-buttons">Advocate</MDBBtn>
                             <br/>
                             <MDBBtn gradient="aqua" onClick={this.goToIntern} className="welcome-buttons" >Intern</MDBBtn>
+                            <div className="next">
+                                <p>Next  <MDBIcon onClick={this.next} icon="arrow-right" /></p>
+                            </div>
                         </div>
                     }
 

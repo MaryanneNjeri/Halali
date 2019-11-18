@@ -8,7 +8,7 @@ import AdvocatePage from './pages/Dashboard/AdvocatePage';
 import InternPage from './pages/Dashboard/InternPage';
 import PartnerPage from './pages/Dashboard/PartnerPage';
 import CompanyRegistration from  './pages/CompanyRegistration';
-import ConfirmRegistration from './pages/ConfirmRegistration';
+import ViewDetailsPage from './pages/ViewDetailsPage';
 
 export default class Routes extends React.Component {
   render() {
@@ -17,12 +17,12 @@ export default class Routes extends React.Component {
         <Route exact path="/" component={RegistrationPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route  exact path="/welcome" component={WelcomePage}/>
-        <Route  exact path="/company_registration" component={CompanyRegistration}/>
+        <Route exact path="/company_registration" component={CompanyRegistration}/>
+        <Route exact path="/view_details" component={ViewDetailsPage}/>
         <Route  exact path="/secretary" component={SecretaryPage}/>
         <Route  exact path="/advocate" component={AdvocatePage}/>
         <Route  exact path="/intern" component={InternPage}/>
         <Route  exact path="/partner" component={PartnerPage}/>
-        <Route exact path="/confirm_registration" component={ConfirmRegistration}/>
       </Switch>
     );
   }
