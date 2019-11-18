@@ -66,21 +66,21 @@ export default class CompanyRegistration extends React.Component{
 
         }
         else  if (role === 'advocate'){
-            advocate.push('advocate',{first_name,last_name,email,address,role});
+            advocate.push({first_name,last_name,email,address,role});
             this.setState({
                 advocate:advocate
             })
 
         }
         else if (role === 'intern'){
-            intern.push('intern',{first_name,last_name,email,address,role});
+            intern.push({first_name,last_name,email,address,role});
             this.setState({
                 intern
             })
 
         }
         else{
-            secretary.push('secretary',{first_name,last_name,email,address,role});
+            secretary.push({first_name,last_name,email,address,role});
             this.setState({
                 secretary
             })
@@ -104,21 +104,21 @@ export default class CompanyRegistration extends React.Component{
 
         }
         else  if (role === 'advocate'){
-            advocate.push('advocate',{first_name,last_name,email,address,role});
+            advocate.push({first_name,last_name,email,address,role});
             this.setState({
                 advocate:advocate
             })
 
         }
         else if (role === 'intern'){
-            intern.push('intern',{first_name,last_name,email,address,role});
+            intern.push({first_name,last_name,email,address,role});
             this.setState({
                 intern
             })
 
         }
         else{
-            secretary.push('secretary',{first_name,last_name,email,address,role});
+            secretary.push({first_name,last_name,email,address,role});
             this.setState({
                 secretary
             })
@@ -136,7 +136,7 @@ export default class CompanyRegistration extends React.Component{
         const { form,role,headerText,first_name,last_name,email,address } = this.state;
         return(
             <MDBRow className="registration-form-row">
-                <MDBCol lg="7" md="7" sm="7" className="login-column"/>
+                <MDBCol lg="7" md="7" sm="7" className="company-reg-column"/>
                 <MDBCol lg="5" md="5"  sm="5" className="form-column">
 
                     <h4 className="h3-responsive text-center"><b>Who would you like to register</b></h4>

@@ -1,6 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { MDBRow, MDBCol,MDBInput,MDBBtn } from 'mdbreact';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { registerCompany } from '../redux/registration/registrationFunctions';
+import LoadingComponent from './sections/LoadingComponent';
+import ErrorComponent from './sections/ErrorComponent';
 
 const mapStyles= {
     width: '100%',
@@ -25,14 +29,27 @@ class RegistrationPage extends React.Component {
     };
    register=()=>{
        const { company_name,number_of_employees,address,email } = this.state;
+       const { dispatch } = this.props;
        const company_details = {
            company_name,number_of_employees,address,email
        };
-       // console.log(company_details)
+       dispatch(registerCompany(company_details));
         this.props.history.push('/login')
 
     };
   render() {
+    const { loading,error } = this.props;
+    if (loading ){
+        return (
+            <LoadingComponent/>
+        )
+    }
+    if(error){
+        return (
+            <ErrorComponent/>
+        )
+    }
+
     return (
 
         <MDBRow className="registration-form-row">
@@ -62,7 +79,11 @@ class RegistrationPage extends React.Component {
     );
   }
 }
-
-export default GoogleApiWrapper({
+const mapStateToProps = state =>({
+    loading: state.registration.loading,
+    error: state.registration.error,
+    response:state.registration.response
+});
+export default connect(mapStateToProps)(GoogleApiWrapper({
     apiKey: 'nnnnnn',
-})(RegistrationPage);
+})(RegistrationPage));

@@ -109,6 +109,19 @@
     background-repeat: no-repeat;
     background-image: url("./assets/images/login1.png");
 }
+.company-reg-column{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    height: 100vh;
+    position: relative;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("./assets/images/writing1.png");
+}
 .role-buttons{
     justify-content: center;
     align-items: center;
@@ -125,6 +138,37 @@
     width:200px;
     border-radius: 30px;
     color: white;
+}
+.loading-bar {
+    justify-content: center;
+    align-content: center;
+    position: center;
+    margin-top: 250px;
+}
+.loading-text {
+    color:orange;
+    font-family:sans-serif;
+}
+/*Error Component and Notfound page*/
+.bad-gateway-row {
+    top:50%;
+    left:55%;
+    right:-130px;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.error-text {
+    font-weight: 300;
+    color: gray;
+}
+.error-header {
+    color: gray;
+    font-weight: bolder;
+
 }
 
 .maps-card {
