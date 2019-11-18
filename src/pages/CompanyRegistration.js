@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerPartner } from "../redux/company_registration/functions";
+import { registerPartner,registerAdvocate,registerIntern,registerSecretary } from "../redux/company_registration/functions";
 import {MDBBtn, MDBCol, MDBInput, MDBRow,MDBIcon} from "mdbreact";
 import LoadingComponent from './sections/LoadingComponent';
 import ErrorComponent from './sections/ErrorComponent';
@@ -69,8 +69,6 @@ class CompanyRegistration extends React.Component{
                 form:false
             });
             dispatch(registerPartner(partner))
-            // console.log(partner)
-
         }
         else  if (role === 'advocate'){
             advocate.push({first_name,last_name,email,address,role});
@@ -78,7 +76,9 @@ class CompanyRegistration extends React.Component{
                 advocate:advocate,
                 form:false
 
-            })
+            });
+            dispatch(registerAdvocate(advocate))
+
 
         }
         else if (role === 'intern'){
@@ -86,8 +86,9 @@ class CompanyRegistration extends React.Component{
             this.setState({
                 intern,
                 form:false
+            });
+            dispatch(registerIntern(intern))
 
-            })
 
         }
         else{
@@ -95,8 +96,9 @@ class CompanyRegistration extends React.Component{
             this.setState({
                 secretary,
                 form:false
+            });
+            dispatch(registerSecretary(secretary))
 
-            })
 
         }
 
@@ -116,9 +118,6 @@ class CompanyRegistration extends React.Component{
             this.setState({
                 partner
             });
-            dispatch(registerPartner(partner))
-            // console.log(partner)
-
         }
         else  if (role === 'advocate'){
             advocate.push({first_name,last_name,email,address,role});
