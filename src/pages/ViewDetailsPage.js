@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { MDBContainer } from "mdbreact";
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import { MDBContainer,MDBRow,MDBCol,MDBCardBody,MDBCard,MDBCardText,MDBCardTitle } from "mdbreact";
 import { viewCompanyDetails } from "../redux/details/function";
 import LoadingComponent from './sections/LoadingComponent';
 import ErrorComponent from './sections/ErrorComponent';
@@ -24,10 +25,22 @@ class ViewDetailsPage extends React.Component{
                 <ErrorComponent/>
             )
         }
-        console.log(details);
+       if( details.company_employees !== undefined){
+           console.log(details.company_employees.Partner);
+
+       }
         return(
             <MDBContainer>
-                <p>Hello world</p>
+               <h2 className="h2-responsive text-center">Company Information </h2>
+                <MDBRow>
+                    { details.company_employess !== undefined ?
+                    _.map(details.company_employees.Partner,(detail,i)=>(
+                        <MDBCol md="4">
+                          <p>{detail.first_name}</p>
+                        </MDBCol>
+                    )):null}
+                </MDBRow>
+
             </MDBContainer>
         )
     }

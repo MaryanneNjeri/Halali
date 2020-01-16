@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MDBRow, MDBCol,MDBInput,MDBBtn, MDBContainer,MDBAlert } from 'mdbreact';
+import { MDBRow, MDBCol,MDBInput,MDBBtn } from 'mdbreact';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import { registerCompany } from '../redux/registration/registrationFunctions';
 import LoadingComponent from './sections/LoadingComponent';
@@ -27,8 +27,7 @@ class RegistrationPage extends React.Component {
                 }
             ],
             email:'',
-            successful:null,
-            message:''
+            successful:null
         }
     }
     handleChange=({target})=>{
@@ -43,18 +42,13 @@ class RegistrationPage extends React.Component {
        };
     
      dispatch(registerCompany(company_details)).then((response)=>{
+         console.log(response)
          if(response.type == 'ERROR_HANDLING')
          {
-             this.setState({
-                 successful:false
-             })
+        console.log(response.type)
          }
          else {
-             this.setState({
-                 successful: true,
-                 message:response.message
-             })
-            this.props.history.push('\login')
+             this.props.history.push('\login')
          }
      })
      
@@ -63,7 +57,6 @@ class RegistrationPage extends React.Component {
     };
   render() {
     const { loading,error } = this.props;
-    const {message,successful } = this.state;
     if (loading ){
         return (
             <LoadingComponent/>
@@ -74,23 +67,8 @@ class RegistrationPage extends React.Component {
             <ErrorComponent error={error}/>
         )
     }
-    
-    return (
-        <MDBContainer fluid>
-        <br/>
-        { successful ==null ? null:
-                    successful?
-                    <MDBContainer>
-                        <MDBAlert color="success" dismiss>
-                        {message}
-                        </MDBAlert>
-              </MDBContainer>:
-              <MDBContainer>
-                <MDBAlert color="danger" dismiss>
-                  Registration not successful
-                </MDBAlert>
-              </MDBContainer>}
 
+    return (
 
         <MDBRow className="registration-form-row">
           <MDBCol className="img-column col-8"/>
@@ -116,7 +94,6 @@ class RegistrationPage extends React.Component {
 
           </MDBCol>
         </MDBRow>
-        </MDBContainer>
 
     );
   }

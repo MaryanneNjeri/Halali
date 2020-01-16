@@ -43,18 +43,20 @@ class RegistrationPage extends React.Component {
        };
     
      dispatch(registerCompany(company_details)).then((response)=>{
+         console.log(response)
          if(response.type == 'ERROR_HANDLING')
          {
              this.setState({
                  successful:false
              })
+        console.log(response.type)
          }
          else {
              this.setState({
                  successful: true,
                  message:response.message
              })
-            this.props.history.push('\login')
+            //  this.props.history.push('\login')
          }
      })
      
@@ -77,12 +79,12 @@ class RegistrationPage extends React.Component {
     
     return (
         <MDBContainer fluid>
-        <br/>
+
         { successful ==null ? null:
                     successful?
                     <MDBContainer>
                         <MDBAlert color="success" dismiss>
-                        {message}
+                        Successfully {message}
                         </MDBAlert>
               </MDBContainer>:
               <MDBContainer>

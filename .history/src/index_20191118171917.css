@@ -5,7 +5,6 @@
     -moz-background-size: 100% auto;
     -o-background-size: 100% auto;
     height: 100vh;
-    margin-top:5.5rem;
     position: relative;
     background-size: 100% auto;
     /*background-position: center;*/
@@ -63,7 +62,7 @@
     margin-right: 5rem;
 }
 .form-column{
-    margin-top: 5.5rem;
+    margin-top: 8.5rem;
 
 }
 .decoratedLine {
@@ -182,7 +181,7 @@
 }
 @media (max-width: 1199.98px) {
     .form-column{
-        /* margin-top: 17rem; */
+        margin-top: 17rem;
     }
 }
 @media (max-width: 576px) {

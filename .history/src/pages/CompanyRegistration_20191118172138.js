@@ -166,8 +166,8 @@ class CompanyRegistration extends React.Component{
         }
         return(
             <MDBRow className="registration-form-row">
-                <MDBCol  className="company-reg-column col-7"/>
-                <MDBCol  className="form-column col-5">
+                <MDBCol lg="7" md="7" sm="7" className="company-reg-column"/>
+                <MDBCol lg="5" md="5"  sm="5" className="form-column">
 
                     <h4 className="h3-responsive text-center"><b>Who would you like to register</b></h4>
                      <br/>

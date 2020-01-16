@@ -11,7 +11,7 @@ function handleErrors(response) {
 export function registerCompany(company){
     return (dispatch) => {
         dispatch(fetchRegistrationBegin());
-        return fetch('http://halali.co.ke/v1/profiles/firm/register/', {
+        return fetch('http://localhost:3001/CompanyRegistration', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

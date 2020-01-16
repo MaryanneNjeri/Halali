@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MDBRow, MDBCol,MDBInput,MDBBtn, MDBContainer,MDBAlert } from 'mdbreact';
+import { MDBRow, MDBCol,MDBInput,MDBBtn } from 'mdbreact';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import { registerCompany } from '../redux/registration/registrationFunctions';
 import LoadingComponent from './sections/LoadingComponent';
@@ -19,16 +19,13 @@ class RegistrationPage extends React.Component {
             company_name:'',
             number_of_employees:'',
             address: '',
-            phone_number:'',
             location:[
                 {
                     'lat': 40.7143528,
                     'lng': -74.0059731
                 }
             ],
-            email:'',
-            successful:null,
-            message:''
+            email:''
         }
     }
     handleChange=({target})=>{
@@ -36,34 +33,23 @@ class RegistrationPage extends React.Component {
 
     };
    register=()=>{
-       const { company_name,number_of_employees,phone_number,address,email,location } = this.state;
+       const { company_name,number_of_employees,address,email,location } = this.state;
        const { dispatch,error } = this.props;
        const company_details = {
-           company_name,number_of_employees,address,phone_number,email,location
+           company_name,number_of_employees,address,email,location
        };
-    
-     dispatch(registerCompany(company_details)).then((response)=>{
-         if(response.type == 'ERROR_HANDLING')
-         {
-             this.setState({
-                 successful:false
-             })
-         }
-         else {
-             this.setState({
-                 successful: true,
-                 message:response.message
-             })
-            this.props.history.push('\login')
-         }
-     })
-     
+       console.log(company_details)
+     dispatch(registerCompany(company_details))
+     if(error === null){
+         console.log(error)
+        this.props.history.push('/login')
+
+     }
       
 
     };
   render() {
     const { loading,error } = this.props;
-    const {message,successful } = this.state;
     if (loading ){
         return (
             <LoadingComponent/>
@@ -74,23 +60,8 @@ class RegistrationPage extends React.Component {
             <ErrorComponent error={error}/>
         )
     }
-    
-    return (
-        <MDBContainer fluid>
-        <br/>
-        { successful ==null ? null:
-                    successful?
-                    <MDBContainer>
-                        <MDBAlert color="success" dismiss>
-                        {message}
-                        </MDBAlert>
-              </MDBContainer>:
-              <MDBContainer>
-                <MDBAlert color="danger" dismiss>
-                  Registration not successful
-                </MDBAlert>
-              </MDBContainer>}
 
+    return (
 
         <MDBRow className="registration-form-row">
           <MDBCol className="img-column col-8"/>
@@ -98,7 +69,6 @@ class RegistrationPage extends React.Component {
               <h3 className="h3-responsive text-center"><b>Registration</b></h3>
               <MDBInput label="Company Name" icon="pencil-alt"  iconSize="3x" iconClass="registration-icon" type="text" name="company_name" onChange={this.handleChange} required />
               <MDBInput label="Email" type="email" icon="envelope" iconClass="registration-icon" name="email" required onChange={this.handleChange}/>
-              <MDBInput label="Phone Number" type="text" icon="phone" iconClass="registration-icon" name="phone_number" required onChange={this.handleChange}/>
               <MDBInput label="Number of Employees" type="number"   iconClass="registration-icon" icon="users" name="number_of_employees" onChange={this.handleChange} required />
               <MDBInput label="Address" type="text"  icon="map-marker" iconClass="registration-icon" name="address" required onChange={this.handleChange} />
               <Map
@@ -116,7 +86,6 @@ class RegistrationPage extends React.Component {
 
           </MDBCol>
         </MDBRow>
-        </MDBContainer>
 
     );
   }
