@@ -17,16 +17,17 @@ class RegistrationPage extends React.Component {
         super(props);
         this.state = {
             company_name:'',
+            email:'',
             number_of_employees:'',
-            address: '',
             phone_number:'',
+            address: '',
             location:[
                 {
-                    'lat': 40.7143528,
-                    'lng': -74.0059731
+                    lat: 40.7143528,
+                    lng: -74.0059731
                 }
             ],
-            email:'',
+            
             successful:null,
             message:''
         }
@@ -43,6 +44,7 @@ class RegistrationPage extends React.Component {
        };
     
      dispatch(registerCompany(company_details)).then((response)=>{
+         
          if(response.type == 'ERROR_HANDLING')
          {
              this.setState({
@@ -52,14 +54,11 @@ class RegistrationPage extends React.Component {
          else {
              this.setState({
                  successful: true,
-                 message:response.message
+                 message:'Firm registered successfully'
              })
             this.props.history.push('\login')
          }
      })
-     
-      
-
     };
   render() {
     const { loading,error } = this.props;
@@ -69,11 +68,7 @@ class RegistrationPage extends React.Component {
             <LoadingComponent/>
         )
     }
-    if(error){
-        return (
-            <ErrorComponent error={error}/>
-        )
-    }
+   
     
     return (
         <MDBContainer fluid>
@@ -87,7 +82,8 @@ class RegistrationPage extends React.Component {
               </MDBContainer>:
               <MDBContainer>
                 <MDBAlert color="danger" dismiss>
-                  Registration not successful
+                  Registration not successful, an error seemed to have occurred 
+                  
                 </MDBAlert>
               </MDBContainer>}
 

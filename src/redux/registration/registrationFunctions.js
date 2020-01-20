@@ -9,6 +9,7 @@ function handleErrors(response) {
 
 // function to accepts company details as a param.
 export function registerCompany(company){
+    
     return (dispatch) => {
         dispatch(fetchRegistrationBegin());
         return fetch('http://halali.co.ke/v1/profiles/firm/register/', {
@@ -22,9 +23,13 @@ export function registerCompany(company){
             .then(handleErrors)
             .then(response => response.json())
             .then((body) => {
-                dispatch(postSuccess(body));
+               dispatch(postSuccess(body));
                 return body;
             })
-            .catch(error => dispatch(errorHandling(error)));
+            .catch( error => dispatch(errorHandling(error)
+            ))
+        
+
+
     };
 }

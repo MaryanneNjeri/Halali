@@ -5,6 +5,7 @@ const initialState = {
     loading: false,
     error: null,
     response: null,
+    firm_id:null
 };
 
 export default function  registrationReducer(state = initialState,action) {
@@ -20,7 +21,8 @@ export default function  registrationReducer(state = initialState,action) {
             return {
                 ...state,
                 loading:false,
-                response: action.payload.response
+                response: action.payload.response,
+                firm_id: action.payload.response.data.firm_id
             };
         case ERROR_HANDLING:
             return {
