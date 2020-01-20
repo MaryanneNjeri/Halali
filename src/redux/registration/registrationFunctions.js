@@ -24,7 +24,8 @@ export function registerCompany(company){
             .then(response => response.json())
             .then((body) => {
                dispatch(postSuccess(body));
-                return body;
+               localStorage.setItem('firm_id',body.data.firm_id)
+               return body;
             })
             .catch( error => dispatch(errorHandling(error)
             ))

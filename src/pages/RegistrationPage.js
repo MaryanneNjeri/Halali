@@ -56,7 +56,8 @@ class RegistrationPage extends React.Component {
                  successful: true,
                  message:'Firm registered successfully'
              })
-            this.props.history.push('\login')
+            const firm_id = localStorage.getItem('firm_id')
+            this.props.history.push('/login/:firm_id')
          }
      })
     };
