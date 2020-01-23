@@ -4,7 +4,7 @@ import { MDBRow, MDBCol,MDBInput,MDBBtn } from 'mdbreact';
 export default class LoginPage extends React.Component {
     login=()=>{
         const firm_id = localStorage.getItem('firm_id')
-        this.props.history.push('/company_registration/:firm_id')
+        this.props.history.push(`/company_registration/${firm_id}`)
     };
     render() {
         return (

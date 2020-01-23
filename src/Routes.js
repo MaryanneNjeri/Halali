@@ -10,21 +10,22 @@ import PartnerPage from './pages/Dashboard/PartnerPage';
 import CompanyRegistration from  './pages/CompanyRegistration';
 import ViewDetailsPage from './pages/ViewDetailsPage';
 import{ RegisteredRoute } from './RegisteredRoutes';
+
 export default class Routes extends React.Component {
   render() {
     const firm_id = localStorage.getItem('firm_id')
     return (
       <Switch>
-        <Route exact path="/" component={RegistrationPage} />
+        <Route exact path="/registration" component={RegistrationPage} />
 
-        <RegisteredRoute exact path="/login/:firm_id" component={LoginPage} />
-        <RegisteredRoute exact path="/welcome/:firm_id"  component={WelcomePage}/>
-        <RegisteredRoute exact path="/company_registration/:firm_id" component={CompanyRegistration}/>
-        <RegisteredRoute exact path="/view_details/:firm_id" component={ViewDetailsPage}/>
-        <RegisteredRoute  exact path="/secretary/:firm_id" component={SecretaryPage}/>
-        <RegisteredRoute  exact path="/advocate/:firm_id" component={AdvocatePage}/>
-        <RegisteredRoute  exact path="/intern/:firm_id" component={InternPage}/>
-        <RegisteredRoute  exact path="/partner/:firm_id" component={PartnerPage}/>
+        <RegisteredRoute exact path="/" component={LoginPage} />
+        <RegisteredRoute exact path={"/welcome" +firm_id}  component={WelcomePage}/>
+        <RegisteredRoute exact path={"/company_registration/" +firm_id} component={CompanyRegistration}/>
+        <RegisteredRoute exact path={"/view_details/" + firm_id} component={ViewDetailsPage}/>
+        <RegisteredRoute  exact path={"/secretary/" +firm_id} component={SecretaryPage}/>
+        <RegisteredRoute  exact path={"/advocate/" +firm_id} component={AdvocatePage}/>
+        <RegisteredRoute  exact path={"/intern/" + firm_id} component={InternPage}/>
+        <RegisteredRoute  exact path={"/partner/" + firm_id} component={PartnerPage}/>
       </Switch>
     );
   }

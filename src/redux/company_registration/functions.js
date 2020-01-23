@@ -8,12 +8,11 @@ function handleErrors(response) {
 
 // function to accepts company details as a param.
 export function registerPartner(partner){
-    console.log(partner);
     const firm_id = localStorage.getItem('firm_id')
     console.log(firm_id)
     return (dispatch) => {
         dispatch(fetchCompanyBegin());
-        return fetch(`http://halali.co.ke/v1/profiles/users/register/${firm_id}`, {
+        return fetch(`http://halali.co.ke/v1/profiles/users/register/${firm_id}/`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

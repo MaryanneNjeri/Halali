@@ -22,7 +22,8 @@ class CompanyRegistration extends React.Component{
             first_name:'',
             last_name:'',
             email:'',
-            address:'',
+            phone_number:'',
+            user_name:'',
             form:false,
             headerText:''
         }
@@ -60,10 +61,10 @@ class CompanyRegistration extends React.Component{
 
     };
     save=()=>{
-        const { first_name,last_name,email,address,role } = this.state;
+        const { first_name,last_name,email,role,user_name,phone_number } = this.state;
         const { dispatch } = this.props;
         if ( role === 'partner'){
-            partner.push({ first_name,last_name,email,address,role});
+            partner.push({ first_name,last_name,email,user_name,phone_number,role});
             this.setState({
                 partner,
                 form:false
@@ -71,7 +72,7 @@ class CompanyRegistration extends React.Component{
             dispatch(registerPartner(partner))
         }
         else  if (role === 'advocate'){
-            advocate.push({first_name,last_name,email,address,role});
+            advocate.push({first_name,last_name,email,user_name,phone_number,role});
             this.setState({
                 advocate:advocate,
                 form:false
@@ -82,7 +83,7 @@ class CompanyRegistration extends React.Component{
 
         }
         else if (role === 'intern'){
-            intern.push({first_name,last_name,email,address,role});
+            intern.push({first_name,last_name,email,user_name,phone_number,role});
             this.setState({
                 intern,
                 form:false
@@ -92,7 +93,7 @@ class CompanyRegistration extends React.Component{
 
         }
         else{
-            secretary.push({first_name,last_name,email,address,role});
+            secretary.push({first_name,last_name,email,user_name,phone_number,role});
             this.setState({
                 secretary,
                 form:false
@@ -110,31 +111,31 @@ class CompanyRegistration extends React.Component{
         })
     };
     add=()=>{
-        const { first_name,last_name,email,address,role } = this.state;
+        const { first_name,last_name,email,role,phone_number,user_name } = this.state;
         const { dispatch } = this.props;
 
         if ( role === 'partner'){
-            partner.push({ first_name,last_name,email,address,role});
+            partner.push({ first_name,last_name,email,user_name,phone_number,role});
             this.setState({
                 partner
             });
         }
         else  if (role === 'advocate'){
-            advocate.push({first_name,last_name,email,address,role});
+            advocate.push({first_name,last_name,email,role,user_name,phone_number,});
             this.setState({
                 advocate:advocate
             })
 
         }
         else if (role === 'intern'){
-            intern.push({first_name,last_name,email,address,role});
+            intern.push({first_name,last_name,email,role,user_name,phone_number,});
             this.setState({
                 intern
             })
 
         }
         else{
-            secretary.push({first_name,last_name,email,address,role});
+            secretary.push({first_name,last_name,email,role,user_name,phone_number,});
             this.setState({
                 secretary
             })
@@ -144,7 +145,8 @@ class CompanyRegistration extends React.Component{
             form:true,
             first_name:'',
             last_name:'',
-            address:'',
+            phone_number:'',
+            user_name:'',
             email:''
         })
     };
@@ -152,7 +154,7 @@ class CompanyRegistration extends React.Component{
         this.props.history.push('/view_details')
     };
     render() {
-        const { form,role,headerText,first_name,last_name,email,address } = this.state;
+        const { form,role,headerText,first_name,last_name,email,user_name,phone_number } = this.state;
         const { loading,error } = this.props;
         if(loading){
             return (
@@ -197,9 +199,14 @@ class CompanyRegistration extends React.Component{
                                 name="email"
                                 onChange={this.handleChange} required />
                             <MDBInput
-                                label="Address"
-                                type="text" value={address}
-                                name="address"
+                                label="Username"
+                                type="text" value={user_name}
+                                name="user_name"
+                                onChange={this.handleChange} required />
+                            <MDBInput
+                                label="Phone Number"
+                                type="text" value={phone_number}
+                                name="phone_number"
                                 onChange={this.handleChange} required />
                             <MDBInput
                                 label="Role"

@@ -39,6 +39,7 @@ class RegistrationPage extends React.Component {
    register=()=>{
        const { company_name,number_of_employees,phone_number,address,email,location } = this.state;
        const { dispatch,error } = this.props;
+       
        const company_details = {
            company_name,number_of_employees,address,phone_number,email,location
        };
@@ -57,7 +58,7 @@ class RegistrationPage extends React.Component {
                  message:'Firm registered successfully'
              })
             const firm_id = localStorage.getItem('firm_id')
-            this.props.history.push('/login/:firm_id')
+            this.props.history.push('/')
          }
      })
     };
