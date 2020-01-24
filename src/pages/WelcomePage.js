@@ -2,22 +2,24 @@ import React from 'react';
 import { MDBContainer,MDBBtn } from "mdbreact";
 import welcome from '../assets/images/celebration.svg';
 
+const firm_id = localStorage.getItem('firm_id')
 
 export default class WelcomePage extends  React.Component{
     goToPartner=()=>{
-        this.props.history.push('/partner')
+        
+        this.props.history.push(`/partner/${firm_id}`)
 
     };
     goToIntern=()=>{
-        this.props.history.push('/intern')
+        this.props.history.push(`/intern/${firm_id}`)
 
     };
     goToAdvocate=()=>{
-        this.props.history.push('/advocate')
+        this.props.history.push(`/advocate/${firm_id}`)
 
     };
     goToSecretary=()=>{
-        this.props.history.push('/secretary')
+        this.props.history.push(`/secretary/${firm_id}`)
 
     };
     render() {

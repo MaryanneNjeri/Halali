@@ -8,9 +8,9 @@ class App extends Component {
   render() {
     return (
         <Provider store={store}>
-          <div>
+          <main id="content" className="p-5">
             <Routes/>
-          </div>
+          </main>
         </Provider>
     );
   }

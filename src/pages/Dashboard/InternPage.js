@@ -5,7 +5,8 @@ export default class InternPage extends React.Component{
     render() {
         return(
             <MDBContainer>
-                <p>Intern</p>
+                <h3 className="dashboard-text">Interm</h3>
+                
             </MDBContainer>
         )
     }

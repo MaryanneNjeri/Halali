@@ -5,7 +5,8 @@ export default class SecretaryPage extends React.Component{
     render() {
         return(
             <MDBContainer>
-                <p>Secretary</p>
+                <h3 className="dashboard-text">Secretary</h3>
+                
             </MDBContainer>
         )
     }

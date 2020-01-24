@@ -10,6 +10,8 @@ import PartnerPage from './pages/Dashboard/PartnerPage';
 import CompanyRegistration from  './pages/CompanyRegistration';
 import ViewDetailsPage from './pages/ViewDetailsPage';
 import{ RegisteredRoute } from './RegisteredRoutes';
+import SideNavigation from './pages/sections/sidebar/sideNavigation';
+import SideCollapsedNavigation from './pages/sections/sidebar/sideCollapsedNavigation';
 
 export default class Routes extends React.Component {
   render() {
@@ -17,15 +19,19 @@ export default class Routes extends React.Component {
     return (
       <Switch>
         <Route exact path="/registration" component={RegistrationPage} />
-
+        
         <RegisteredRoute exact path="/" component={LoginPage} />
         <RegisteredRoute exact path={"/welcome/" +firm_id}  component={WelcomePage}/>
         <RegisteredRoute exact path={"/company_registration/" +firm_id} component={CompanyRegistration}/>
         <RegisteredRoute exact path={"/view_details/" + firm_id} component={ViewDetailsPage}/>
+        <>
+        <SideNavigation/>
+        <SideCollapsedNavigation/>
         <RegisteredRoute  exact path={"/secretary/" +firm_id} component={SecretaryPage}/>
         <RegisteredRoute  exact path={"/advocate/" +firm_id} component={AdvocatePage}/>
         <RegisteredRoute  exact path={"/intern/" + firm_id} component={InternPage}/>
         <RegisteredRoute  exact path={"/partner/" + firm_id} component={PartnerPage}/>
+        </>
       </Switch>
     );
   }

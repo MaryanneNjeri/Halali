@@ -5,7 +5,7 @@ export default class PartnerPage extends React.Component{
     render() {
         return(
             <MDBContainer>
-                <p>Partner</p>
+                <h3 className="dashboard-text">Partner</h3>
             </MDBContainer>
         )
     }

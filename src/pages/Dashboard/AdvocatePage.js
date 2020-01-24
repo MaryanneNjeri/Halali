@@ -5,7 +5,8 @@ export default class AdvocatePage extends React.Component{
     render() {
         return(
             <MDBContainer>
-                <p>Advocate</p>
+                <h3 className="dashboard-text">Advocate</h3>
+                
             </MDBContainer>
         )
     }
