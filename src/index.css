@@ -150,6 +150,13 @@
     color:orange;
     font-family:sans-serif;
 }
+.card-details-text{
+    /* font-size: small; */
+    font-size: 15px;
+    text-align: left;
+    color: #2A3132;
+  
+}
 /*Error Component and Notfound page*/
 .bad-gateway-row {
     top:50%;

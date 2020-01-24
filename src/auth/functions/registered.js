@@ -17,4 +17,4 @@ registered(){
     }
  }
 }
-console.log(auth.registered())
+// console.log(auth.registered())

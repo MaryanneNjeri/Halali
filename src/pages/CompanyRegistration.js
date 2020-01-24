@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerPartner,registerAdvocate,registerIntern,registerSecretary } from "../redux/company_registration/functions";
+import _ from 'lodash';
+import { registerCompanyDetails } from "../redux/company_registration/functions";
 import {MDBBtn, MDBCol, MDBInput, MDBRow,MDBIcon} from "mdbreact";
 import LoadingComponent from './sections/LoadingComponent';
 import ErrorComponent from './sections/ErrorComponent';
@@ -9,6 +10,7 @@ let partner =[];
 let advocate = [];
 let intern = [];
 let secretary = [];
+let data = []
 
 class CompanyRegistration extends React.Component{
     constructor(props) {
@@ -25,7 +27,8 @@ class CompanyRegistration extends React.Component{
             phone_number:'',
             user_name:'',
             form:false,
-            headerText:''
+            headerText:'',
+            data: []
         }
     }
     goToPartner=()=>{
@@ -60,60 +63,8 @@ class CompanyRegistration extends React.Component{
         this.setState({[target.name]:target.value})
 
     };
-    save=()=>{
-        const { first_name,last_name,email,role,user_name,phone_number } = this.state;
-        const { dispatch } = this.props;
-        if ( role === 'partner'){
-            partner.push({ first_name,last_name,email,user_name,phone_number,role});
-            this.setState({
-                partner,
-                form:false
-            });
-            dispatch(registerPartner(partner))
-        }
-        else  if (role === 'advocate'){
-            advocate.push({first_name,last_name,email,user_name,phone_number,role});
-            this.setState({
-                advocate:advocate,
-                form:false
-
-            });
-            dispatch(registerAdvocate(advocate))
-
-
-        }
-        else if (role === 'intern'){
-            intern.push({first_name,last_name,email,user_name,phone_number,role});
-            this.setState({
-                intern,
-                form:false
-            });
-            dispatch(registerIntern(intern))
-
-
-        }
-        else{
-            secretary.push({first_name,last_name,email,user_name,phone_number,role});
-            this.setState({
-                secretary,
-                form:false
-            });
-            dispatch(registerSecretary(secretary))
-
-
-        }
-
-
-    };
-    close=()=>{
-        this.setState({
-            form:false
-        })
-    };
     add=()=>{
-        const { first_name,last_name,email,role,phone_number,user_name } = this.state;
-        const { dispatch } = this.props;
-
+        const { first_name,last_name,email,role,phone_number,user_name,data } = this.state;
         if ( role === 'partner'){
             partner.push({ first_name,last_name,email,user_name,phone_number,role});
             this.setState({
@@ -121,26 +72,25 @@ class CompanyRegistration extends React.Component{
             });
         }
         else  if (role === 'advocate'){
-            advocate.push({first_name,last_name,email,role,user_name,phone_number,});
-            this.setState({
-                advocate:advocate
-            })
-
-        }
+            advocate.push({first_name,last_name,email,role,user_name,phone_number});
+             this.setState({
+                advocate
+            }) 
+        } 
         else if (role === 'intern'){
             intern.push({first_name,last_name,email,role,user_name,phone_number,});
             this.setState({
-                intern
+                intern,
+                data
             })
-
         }
         else{
             secretary.push({first_name,last_name,email,role,user_name,phone_number,});
             this.setState({
-                secretary
+                secretary,
             })
-
         }
+
         this.setState({
             form:true,
             first_name:'',
@@ -150,11 +100,32 @@ class CompanyRegistration extends React.Component{
             email:''
         })
     };
+    save=()=>{
+        const {partner,advocate,intern,secretary} = this.state;
+        const { dispatch } = this.props;
+        let data1 = new Map();
+        data1.set('partner',partner);
+        data1.set('advocate',advocate);
+        data1.set('intern',intern);
+        data1.set('secretary',secretary)
+        this.setState({
+            data:data1
+        })
+        dispatch(registerCompanyDetails(data1))
+       
+    }
+    close=()=>{
+        this.setState({
+            form:false
+        })
+    };
+    
     next=()=>{
-        this.props.history.push('/view_details')
+        const firm_id = localStorage.getItem('firm_id')
+        this.props.history.push(`/view_details/${firm_id}`)
     };
     render() {
-        const { form,role,headerText,first_name,last_name,email,user_name,phone_number } = this.state;
+        const { form,role,headerText,first_name,last_name,email,user_name,phone_number,data } = this.state;
         const { loading,error } = this.props;
         if(loading){
             return (
@@ -220,7 +191,7 @@ class CompanyRegistration extends React.Component{
                                     <MDBIcon icon="plus" className="mr-1" /> Save & Add</MDBBtn>
                                 <br/>
                                 <br/>
-                                <MDBBtn gradient="peach" onClick={this.save} className="register-buttons" >Save</MDBBtn>
+                                {/* <MDBBtn gradient="peach" onClick={this.save} className="register-buttons" >Save</MDBBtn> */}
                             </div>
                         </div> :
                         <div className="role-buttons-reg">
@@ -231,8 +202,12 @@ class CompanyRegistration extends React.Component{
                             <MDBBtn gradient="peach" onClick={this.goToAdvocate} className="welcome-buttons">Advocate</MDBBtn>
                             <br/>
                             <MDBBtn gradient="aqua" onClick={this.goToIntern} className="welcome-buttons" >Intern</MDBBtn>
+                            <br/>
+                            <MDBBtn gradient="sunny-morning" onClick={this.save} className="welcome-buttons" >Save all</MDBBtn>
+                            <br/>
                             <div className="next">
-                                <p>Next  <MDBIcon onClick={this.next} icon="arrow-right" /></p>
+
+                                <p> View Details {' '}<MDBIcon onClick={this.next} icon="arrow-right" /></p>
                             </div>
                         </div>
                     }
