@@ -19,7 +19,7 @@ export default class Routes extends React.Component {
         <Route exact path="/registration" component={RegistrationPage} />
 
         <RegisteredRoute exact path="/" component={LoginPage} />
-        <RegisteredRoute exact path={"/welcome" +firm_id}  component={WelcomePage}/>
+        <RegisteredRoute exact path={"/welcome/" +firm_id}  component={WelcomePage}/>
         <RegisteredRoute exact path={"/company_registration/" +firm_id} component={CompanyRegistration}/>
         <RegisteredRoute exact path={"/view_details/" + firm_id} component={ViewDetailsPage}/>
         <RegisteredRoute  exact path={"/secretary/" +firm_id} component={SecretaryPage}/>

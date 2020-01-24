@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { MDBContainer,MDBRow,MDBCol,MDBCardBody,MDBCard,MDBCardText,MDBCardTitle } from "mdbreact";
+import { MDBContainer,MDBRow,MDBCol,MDBCardBody,MDBCard,MDBCardText,MDBIcon } from "mdbreact";
 import { viewCompanyDetails } from "../redux/details/function";
 import LoadingComponent from './sections/LoadingComponent';
 import ErrorComponent from './sections/ErrorComponent';
@@ -11,7 +11,10 @@ class ViewDetailsPage extends React.Component{
         const { dispatch } = this.props;
         dispatch(viewCompanyDetails())
     }
-
+   next=()=>{
+    const firm_id = localStorage.getItem('firm_id')
+    this.props.history.push(`/welcome/${firm_id}`)
+   }
     render() {
         const { loading,details,error } = this.props;
         
@@ -28,6 +31,7 @@ class ViewDetailsPage extends React.Component{
            return(
             <MDBContainer>
                <h2 className="h2-responsive text-center">Company Information </h2>
+               <p> Go to Dashboard {' '}<MDBIcon onClick={this.next} icon="arrow-right" /></p>
                <br/>
                     <br/>
                     <h4 className="text-center"> <i className="fas fa-user-friends"></i> Partners</h4>
