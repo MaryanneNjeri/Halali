@@ -6,19 +6,23 @@ const firm_id = localStorage.getItem('firm_id')
 
 export default class WelcomePage extends  React.Component{
     goToPartner=()=>{
-        
+        localStorage.setItem("employee","partner")
+        console.log(localStorage.getItem('employee'))
         this.props.history.push(`/partner/${firm_id}`)
 
     };
     goToIntern=()=>{
+        localStorage.setItem('employee',"intern")
         this.props.history.push(`/intern/${firm_id}`)
 
     };
     goToAdvocate=()=>{
+        localStorage.setItem("employee","advocate")
         this.props.history.push(`/advocate/${firm_id}`)
 
     };
     goToSecretary=()=>{
+        localStorage.setItem("employee","secretary")
         this.props.history.push(`/secretary/${firm_id}`)
 
     };

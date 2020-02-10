@@ -154,6 +154,9 @@ body{
     border-radius: 30px;
     color: white;
 }
+.header-text {
+    color:orange;
+}
 .loading-bar {
     justify-content: center;
     align-content: center;
@@ -171,6 +174,19 @@ body{
     color: #2A3132;
   
 }
+.appointment-card{
+    border-radius: 30px;
+    /* border-right-color: orange; */
+    border-right-width: 4px;
+
+}
+.appointment-icon{
+    color:lightslategray;
+}
+.appointment-right{
+    background-color: orange;
+}
+
 /*Error Component and Notfound page*/
 .bad-gateway-row {
     top:50%;
@@ -205,7 +221,10 @@ body{
     color:#01292E;
     font-weight: 100;
 }
-
+.subtext{
+    color:lightslategray;
+    font-weight: lighter;
+}
 @media (max-width: 576px) {
     .role-buttons{
         flex-direction: column;

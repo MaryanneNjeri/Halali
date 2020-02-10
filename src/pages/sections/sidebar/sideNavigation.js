@@ -12,12 +12,13 @@ class SideNavigation extends React.Component {
 
 
   render() {
-
+    const firm_id = localStorage.getItem('firm_id')
+    const employee = localStorage.getItem('employee')
     return (
       <div className="sidebar-fixed position-fixed">
         
         <MDBListGroup className="list-group-flush">
-          <NavLink exact to="/" activeClassName="activeClass">
+          <NavLink exact to={`/${employee}/${firm_id}`} activeClassName="activeClass">
             <MDBListGroupItem className="icon">
               <MDBIcon icon="tachometer-alt" className="mr-3 icon-color"/>
               Dashboard

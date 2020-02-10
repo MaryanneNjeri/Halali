@@ -34,7 +34,7 @@ class ViewDetailsPage extends React.Component{
                <p> Go to Dashboard {' '}<MDBIcon onClick={this.next} icon="arrow-right" /></p>
                <br/>
                     <br/>
-                    <h4 className="text-center"> <i className="fas fa-user-friends"></i> Partners</h4>
+                    <h4 className="text-center header-text"> <i className="fas fa-user-friends"></i> Partners</h4>
                     <br/>
                 <MDBRow>
                     
@@ -68,7 +68,7 @@ class ViewDetailsPage extends React.Component{
                 </MDBRow> 
                 <br/>
                 <br/>
-                    <h4 className="text-center"> <i className="fas fa-user-friends"></i> Advocates</h4>
+                    <h4 className="text-center header-text"> <i className="fas fa-user-friends"></i> Advocates</h4>
                     <br/>
                 <MDBRow>
                     
@@ -102,7 +102,7 @@ class ViewDetailsPage extends React.Component{
                 </MDBRow>
                 
                 <br/>
-                    <h4 className="text-center"> <i className="fas fa-user-friends"></i> Interns</h4>
+                    <h4 className="text-center header-text"> <i className="fas fa-user-friends"></i> Interns</h4>
                     <br/>
                 <MDBRow>
                     
@@ -136,7 +136,7 @@ class ViewDetailsPage extends React.Component{
                 </MDBRow> 
 
                 <br/>
-                    <h4 className="text-center"> <i className="fas fa-user-friends"></i> Secretary</h4>
+                    <h4 className="text-center header-text"> <i className="fas fa-user-friends"></i> Secretary</h4>
                     <br/>
                 <MDBRow>
                     
@@ -170,7 +170,7 @@ class ViewDetailsPage extends React.Component{
                 </MDBRow>
 
                 <br/>
-                    <h4 className="text-center"> <i className="fas fa-user-friends"></i> Legal Clerks</h4>
+                    <h4 className="text-center header-text"> <i className="fas fa-user-friends"></i> Legal Clerks</h4>
                     <br/>
                 <MDBRow>
                     

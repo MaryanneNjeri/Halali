@@ -112,7 +112,7 @@ class CompanyRegistration extends React.Component{
             data:data1
         })
         dispatch(registerCompanyDetails(data1))
-       
+        localStorage.setItem('company_registered',true)
     }
     close=()=>{
         this.setState({

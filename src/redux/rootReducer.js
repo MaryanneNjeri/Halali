@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import  registration from './registration/reducer';
 import company from './company_registration/reducer';
 import details from './details/reducer';
+import appointments from './partner/reducer';
 
 /*
 * thunk has to be wrapped around a middleware
@@ -12,5 +13,6 @@ import details from './details/reducer';
 export default combineReducers({
  registration,
  company,
- details
+ details,
+ appointments
 });

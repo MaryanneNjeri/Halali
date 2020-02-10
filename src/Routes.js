@@ -16,6 +16,8 @@ import SideCollapsedNavigation from './pages/sections/sidebar/sideCollapsedNavig
 export default class Routes extends React.Component {
   render() {
     const firm_id = localStorage.getItem('firm_id')
+    const employee = localStorage.getItem('employee')
+    
     return (
       <Switch>
         <Route exact path="/registration" component={RegistrationPage} />
@@ -27,10 +29,16 @@ export default class Routes extends React.Component {
         <>
         <SideNavigation/>
         <SideCollapsedNavigation/>
+        {employee === 'partner' ?
+        <RegisteredRoute  exact path={"/partner/" +firm_id} component={PartnerPage}/>
+        : employee === 'secretary'?
         <RegisteredRoute  exact path={"/secretary/" +firm_id} component={SecretaryPage}/>
-        <RegisteredRoute  exact path={"/advocate/" +firm_id} component={AdvocatePage}/>
+        : employee === 'intern'?
         <RegisteredRoute  exact path={"/intern/" + firm_id} component={InternPage}/>
-        <RegisteredRoute  exact path={"/partner/" + firm_id} component={PartnerPage}/>
+        :
+        <RegisteredRoute  exact path={"/advocate/" + firm_id} component={AdvocatePage}/>
+      
+    }
         </>
       </Switch>
     );
