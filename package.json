@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.19.1",
     "google-maps-react": "^2.0.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mdbreact": "4.21.1",
     "react": "^16.9.0",
     "react-addons-css-transition-group": "^15.6.2",
